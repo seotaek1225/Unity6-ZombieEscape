@@ -9,14 +9,11 @@ namespace ZombieEscape
         Play
     }
 
-    public class SceneController : MonoBehaviour
+    public class SceneController : Singleton<SceneController>
     {
-        public static SceneController Instance;
-
-        private void Awake()
+        protected override void Awake()
         {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            base.Awake();
         }
 
         public void Load(SceneName _name)

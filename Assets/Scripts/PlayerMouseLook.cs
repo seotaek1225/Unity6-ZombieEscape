@@ -23,10 +23,10 @@ namespace ZombieEscape
 
         private void Update()
         {
-            HandleMouseLook();
+            handleMouseLook();
         }
 
-        void HandleMouseLook()
+        void handleMouseLook()
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;

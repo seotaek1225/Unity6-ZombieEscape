@@ -15,19 +15,24 @@ namespace ZombieEscape
 
         void Update()
         {
-            HandleMovement();
+            handleMovement();
         }
 
-        void HandleMovement()
+        private void handleMovement()
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-            Vector3 move = transform.right * horizontal + transform.forward * vertical;
+            //Vector3 moveDirection = transform.right * horizontal + transform.forward * vertical;
+            Vector3 moveDirection = new Vector3(horizontal, 0f, vertical);
+            if (moveDirection.magnitude > 0)
+            {
+                moveDirection.Normalize();
+            }
 
             float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
 
-            controller.Move(move * currentSpeed * Time.deltaTime);
+            controller.Move(moveDirection * currentSpeed * Time.deltaTime);
         }
     }
 }
